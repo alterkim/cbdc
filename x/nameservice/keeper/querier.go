@@ -2,7 +2,7 @@ package keeper
 
 import (
 	// this line is used by starport scaffolding # 1
-	"github.comm/alterkim/nameservice/x/nameservice/types"
+	"github.com/alterkim/nameservice/x/nameservice/types"
 
 	abci "github.com/tendermint/tendermint/abci/types"
 

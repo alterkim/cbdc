@@ -6,7 +6,7 @@ import (
 	"strconv"
 
 	"github.com/cosmos/cosmos-sdk/codec"
-	"github.comm/alterkim/nameservice/x/nameservice/types"
+	"github.com/alterkim/nameservice/x/nameservice/types"
 )
 
 // GetWhoisCount get the total number of whois

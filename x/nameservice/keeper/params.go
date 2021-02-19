@@ -6,7 +6,7 @@ import (
 	"time"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.comm/alterkim/nameservice/x/nameservice/types"
+	"github.com/alterkim/nameservice/x/nameservice/types"
 )
 
 // GetParams returns the total set of nameservice parameters.
