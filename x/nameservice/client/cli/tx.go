@@ -8,7 +8,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/client/flags"
 	"github.com/cosmos/cosmos-sdk/codec"
-	"github.comm/user/nameservice/x/nameservice/types"
+	"github.comm/alterkim/nameservice/x/nameservice/types"
 )
 
 // GetTxCmd returns the transaction commands for this module

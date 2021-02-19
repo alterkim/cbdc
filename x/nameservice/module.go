@@ -13,10 +13,10 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/types/module"
 	"github.com/cosmos/cosmos-sdk/x/bank"
-	"github.comm/user/nameservice/x/nameservice/client/cli"
-	"github.comm/user/nameservice/x/nameservice/client/rest"
-	"github.comm/user/nameservice/x/nameservice/keeper"
-	"github.comm/user/nameservice/x/nameservice/types"
+	"github.comm/alterkim/nameservice/x/nameservice/client/cli"
+	"github.comm/alterkim/nameservice/x/nameservice/client/rest"
+	"github.comm/alterkim/nameservice/x/nameservice/keeper"
+	"github.comm/alterkim/nameservice/x/nameservice/types"
 )
 
 // Type check to ensure the interface is properly implemented

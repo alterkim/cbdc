@@ -8,7 +8,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/types/rest"
 	"github.com/cosmos/cosmos-sdk/x/auth/client/utils"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.comm/user/nameservice/x/nameservice/types"
+	"github.comm/alterkim/nameservice/x/nameservice/types"
 )
 
 // Used to not have an error if strconv is unused

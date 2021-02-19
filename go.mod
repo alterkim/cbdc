@@ -1,4 +1,4 @@
-module github.comm/user/nameservice
+module github.comm/alterkim/nameservice
 
 go 1.15
 

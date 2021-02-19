@@ -5,8 +5,8 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
-	"github.comm/user/nameservice/x/nameservice/keeper"
-	"github.comm/user/nameservice/x/nameservice/types"
+	"github.comm/alterkim/nameservice/x/nameservice/keeper"
+	"github.comm/alterkim/nameservice/x/nameservice/types"
 )
 
 // NewHandler ...

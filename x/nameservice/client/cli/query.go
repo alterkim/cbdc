@@ -13,7 +13,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/codec"
 	// sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.comm/user/nameservice/x/nameservice/types"
+	"github.comm/alterkim/nameservice/x/nameservice/types"
 )
 
 // GetQueryCmd returns the cli query commands for this module
