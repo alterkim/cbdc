@@ -68,6 +68,6 @@ func GetCmdResolveName(queryRoute string, cdc *codec.Codec) *cobra.Command {
 			var out types.QueryResResolve
 			cdc.MustUnmarshalJSON(res, &out)
 			return cliCtx.PrintOutput(out)
-		}
+		},
 	}
 }

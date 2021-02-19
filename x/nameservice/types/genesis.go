@@ -1,5 +1,7 @@
 package types
 
+import "fmt"
+
 // GenesisState - all nameservice state that must be provided at genesis
 type GenesisState struct {
 	WhoisRecords []Whois `json: "whois_records`
