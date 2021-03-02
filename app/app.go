@@ -10,6 +10,9 @@ import (
 	tmos "github.com/tendermint/tendermint/libs/os"
 	dbm "github.com/tendermint/tm-db"
 
+	"github.com/alterkim/cbdc/x/cbdc"
+	cbdckeeper "github.com/alterkim/cbdc/x/cbdc/keeper"
+	cbdctypes "github.com/alterkim/cbdc/x/cbdc/types"
 	bam "github.com/cosmos/cosmos-sdk/baseapp"
 	"github.com/cosmos/cosmos-sdk/codec"
 	"github.com/cosmos/cosmos-sdk/simapp"
@@ -22,30 +25,27 @@ import (
 	"github.com/cosmos/cosmos-sdk/x/params"
 	"github.com/cosmos/cosmos-sdk/x/staking"
 	"github.com/cosmos/cosmos-sdk/x/supply"
-	"github.com/alterkim/nameservice/x/nameservice"
-	nameservicekeeper "github.com/alterkim/nameservice/x/nameservice/keeper"
-	nameservicetypes "github.com/alterkim/nameservice/x/nameservice/types"
-  // this line is used by starport scaffolding # 1
+	// this line is used by starport scaffolding # 1
 )
 
-const appName = "nameservice"
+const appName = "cbdc"
 
 var (
-	DefaultCLIHome = os.ExpandEnv("$HOME/.nameservicecli")
-	DefaultNodeHome = os.ExpandEnv("$HOME/.nameserviced")
-	ModuleBasics = module.NewBasicManager(
+	DefaultCLIHome  = os.ExpandEnv("$HOME/.cbdccli")
+	DefaultNodeHome = os.ExpandEnv("$HOME/.cbdcd")
+	ModuleBasics    = module.NewBasicManager(
 		genutil.AppModuleBasic{},
 		auth.AppModuleBasic{},
 		bank.AppModuleBasic{},
 		staking.AppModuleBasic{},
 		params.AppModuleBasic{},
 		supply.AppModuleBasic{},
-		nameservice.AppModuleBasic{},
-    // this line is used by starport scaffolding # 2
+		cbdc.AppModuleBasic{},
+		// this line is used by starport scaffolding # 2
 	)
 
 	maccPerms = map[string][]string{
-		auth.FeeCollectorName:     nil,
+		auth.FeeCollectorName: nil,
 		// this line is used by starport scaffolding # 2.1
 		staking.BondedPoolName:    {supply.Burner, supply.Staking},
 		staking.NotBondedPoolName: {supply.Burner, supply.Staking},
@@ -73,13 +73,13 @@ type NewApp struct {
 
 	subspaces map[string]params.Subspace
 
-	accountKeeper  auth.AccountKeeper
-	bankKeeper     bank.Keeper
-	stakingKeeper  staking.Keeper
-	supplyKeeper   supply.Keeper
-	paramsKeeper   params.Keeper
-	nameserviceKeeper nameservicekeeper.Keeper
-  // this line is used by starport scaffolding # 3
+	accountKeeper auth.AccountKeeper
+	bankKeeper    bank.Keeper
+	stakingKeeper staking.Keeper
+	supplyKeeper  supply.Keeper
+	paramsKeeper  params.Keeper
+	cbdcKeeper    cbdckeeper.Keeper
+	// this line is used by starport scaffolding # 3
 	mm *module.Manager
 
 	sm *module.SimulationManager
@@ -98,14 +98,14 @@ func NewInitApp(
 	bApp.SetAppVersion(version.Version)
 
 	keys := sdk.NewKVStoreKeys(
-    bam.MainStoreKey,
-    auth.StoreKey,
-    staking.StoreKey,
+		bam.MainStoreKey,
+		auth.StoreKey,
+		staking.StoreKey,
 		supply.StoreKey,
-    params.StoreKey,
-    nameservicetypes.StoreKey,
-    // this line is used by starport scaffolding # 5
-  )
+		params.StoreKey,
+		cbdctypes.StoreKey,
+		// this line is used by starport scaffolding # 5
+	)
 
 	tKeys := sdk.NewTransientStoreKeys(staking.TStoreKey, params.TStoreKey)
 
@@ -156,26 +156,26 @@ func NewInitApp(
 
 	app.stakingKeeper = *stakingKeeper.SetHooks(
 		staking.NewMultiStakingHooks(
-			// this line is used by starport scaffolding # 5.3
+		// this line is used by starport scaffolding # 5.3
 		),
 	)
 
-	app.nameserviceKeeper = nameservicekeeper.NewKeeper(
+	app.cbdcKeeper = cbdckeeper.NewKeeper(
 		app.bankKeeper,
 		app.cdc,
-		keys[nameservicetypes.StoreKey],
+		keys[cbdctypes.StoreKey],
 	)
 
-  // this line is used by starport scaffolding # 4
+	// this line is used by starport scaffolding # 4
 
 	app.mm = module.NewManager(
 		genutil.NewAppModule(app.accountKeeper, app.stakingKeeper, app.BaseApp.DeliverTx),
 		auth.NewAppModule(app.accountKeeper),
 		bank.NewAppModule(app.bankKeeper, app.accountKeeper),
 		supply.NewAppModule(app.supplyKeeper, app.accountKeeper),
-		nameservice.NewAppModule(app.nameserviceKeeper, app.bankKeeper),
+		cbdc.NewAppModule(app.cbdcKeeper, app.bankKeeper),
 		staking.NewAppModule(app.stakingKeeper, app.accountKeeper, app.supplyKeeper),
-    // this line is used by starport scaffolding # 6
+		// this line is used by starport scaffolding # 6
 	)
 
 	app.mm.SetOrderEndBlockers(
@@ -188,10 +188,10 @@ func NewInitApp(
 		staking.ModuleName,
 		auth.ModuleName,
 		bank.ModuleName,
-		nameservicetypes.ModuleName,
+		cbdctypes.ModuleName,
 		supply.ModuleName,
 		genutil.ModuleName,
-    // this line is used by starport scaffolding # 7
+		// this line is used by starport scaffolding # 7
 	)
 
 	app.mm.RegisterRoutes(app.Router(), app.QueryRouter())

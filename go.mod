@@ -1,4 +1,4 @@
-module github.com/alterkim/nameservice
+module github.com/alterkim/cbdc
 
 go 1.15
 

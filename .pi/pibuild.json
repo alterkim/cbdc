@@ -37,8 +37,8 @@
   "provisioners": [
     {
       "type": "file",
-      "source": ".pi/nameserviced.service",
-      "destination": "/etc/systemd/system/nameserviced.service"
+      "source": ".pi/cbdcd.service",
+      "destination": "/etc/systemd/system/cbdcd.service"
     },
 	{
 	  "type": "file",
@@ -52,13 +52,13 @@
     },
     {
       "type": "file",
-      "source": "cmd/nameserviced/nameserviced",
-      "destination": "/usr/bin/nameserviced"
+      "source": "cmd/cbdcd/cbdcd",
+      "destination": "/usr/bin/cbdcd"
     },
     {
       "type": "file",
-      "source": "cmd/nameservicecli/nameservicecli",
-      "destination": "/usr/bin/nameservicecli"
+      "source": "cmd/cbdccli/cbdccli",
+      "destination": "/usr/bin/cbdccli"
     },
     {
 	  "type": "file",

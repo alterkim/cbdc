@@ -16,10 +16,10 @@ wget http://download.zerotier.com/debian/buster/pool/main/z/zerotier-one/zerotie
 dpkg -i zerotier-one_1.4.6_arm64.deb
 apt install -y
 
-# Set Up nameservice
-chmod +x /usr/bin/nameserviced /usr/bin/nameservicecli
-mkdir -p /nameservice/config
-systemctl enable nameserviced
+# Set Up cbdc
+chmod +x /usr/bin/cbdcd /usr/bin/cbdccli
+mkdir -p /cbdc/config
+systemctl enable cbdcd
 
 
 # Set up Nodejs without NVM
