@@ -13,6 +13,8 @@ import (
 	"github.com/cosmos/cosmos-sdk/x/auth/client/utils"
 )
 
+// TODO: Change this logic to payment, transfer, exchange CONTRACT
+
 func GetCmdBuyName(cdc *codec.Codec) *cobra.Command {
 	return &cobra.Command{
 		Use:   "buy-name [name] [price]",

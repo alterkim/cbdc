@@ -23,6 +23,7 @@ func GetTxCmd(cdc *codec.Codec) *cobra.Command {
 
 	cbdcTxCmd.AddCommand(flags.PostCommands(
 		// TODO: Change the logic of transaction
+		// Can check when cbdccli tx cbdc --help
 		GetCmdBuyName(cdc),
 		GetCmdSetName(cdc),
 		GetCmdDeleteName(cdc),
