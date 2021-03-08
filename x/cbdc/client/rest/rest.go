@@ -8,7 +8,7 @@ import (
 
 // RegisterRoutes registers cbdc-related REST handlers to a router
 func RegisterRoutes(cliCtx context.CLIContext, r *mux.Router) {
-	// this line is used by starport scaffolding # 1
+	// TODO: Design API for Contract(payment, transfer, exchange)
 	r.HandleFunc("/cbdc/whois", buyNameHandler(cliCtx)).Methods("POST")
 	r.HandleFunc("/cbdc/whois", listWhoisHandler(cliCtx, "cbdc")).Methods("GET")
 	r.HandleFunc("/cbdc/whois/{key}", getWhoisHandler(cliCtx, "cbdc")).Methods("GET")
