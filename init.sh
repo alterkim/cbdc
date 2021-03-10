@@ -3,12 +3,12 @@
 rm -rf ~/.cbdcd
 rm -rf ~/.cbdccli
 
-cbdcd init test --chain-id=namechain
+cbdcd init test --chain-id=CBDC
 
 cbdccli config output json
 cbdccli config indent true
 cbdccli config trust-node true
-cbdccli config chain-id namechain
+cbdccli config chain-id CBDC
 cbdccli config keyring-backend test
 
 cbdccli keys add user1
