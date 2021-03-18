@@ -4,7 +4,7 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 )
 
-var MinNamePrice = sdk.Coins{sdk.NewInt64Coin("cbdctoken", 1)}
+var MinCBDC = sdk.Coins{sdk.NewInt64Coin("cbdctoken", 1)}
 
 type Whois struct {
 	Creator sdk.AccAddress `json:"creator" yaml:"creator"`
@@ -15,6 +15,6 @@ type Whois struct {
 
 func NewWhois() Whois {
 	return Whois{
-		Price: MinNamePrice,
+		Price: MinCBDC,
 	}
 }
