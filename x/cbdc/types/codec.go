@@ -10,6 +10,7 @@ func RegisterCodec(cdc *codec.Codec) {
 	cdc.RegisterConcrete(MsgBuyName{}, "cbdc/BuyName", nil)
 	cdc.RegisterConcrete(MsgSetName{}, "cbdc/SetName", nil)
 	cdc.RegisterConcrete(MsgDeleteName{}, "cbdc/DeleteName", nil)
+	cdc.RegisterConcrete(MsgPayment{}, "cbdc/payment", nil)
 }
 
 // ModuleCdc defines the module codec
